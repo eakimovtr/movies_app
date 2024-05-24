@@ -5,7 +5,7 @@ from model import MovieModel
 class MovieController:
     def __init__(self):
         self.view = MovieView()
-        self.model = MovieModel("D:\Python\Акимов\py_2024_05_22\movies.csv")
+        self.model = MovieModel()
 
     def run(self) -> None:
         user_option = ""

@@ -1,35 +1,18 @@
-from csv import reader, writer
-
-
-class Movie:
-    def __init__(self, title: str, genre: list[str], producer: str,
-                 year: str, length: str, studio: str, actors: list[str]):
-        self.title = title
-        self.genre = genre
-        self.producer = producer
-        self.year = year
-        self.length = length
-        self.studio = studio
-        self.actors = actors
-        
-    def __str__(self) -> str:
-        return f"{self.title}, {self.year}"
+from repo import Movie, MovieRepo
 
 
 class MovieModel:
-    def __init__(self, filepath) -> None:
-        self.database: list[Movie] = []
-        try:
-            f = open(filepath, encoding="utf-8")
-            rows = reader(f)
-            for row in rows:
-                self.database.append(Movie(*row))
-        except FileNotFoundError as e:
-            print(e)
-            self.database: list[Movie] = []
+    def __init__(self, movieRepo: MovieRepo = MovieRepo("movies.csv")):
+        '''
+        Initialize a model with injected movie repository.
+        
+        Keyword arguments:
+        movieRepo -- movie repository to use
+        '''
+        self.movieRepo = movieRepo
 
     def get_movies_by(self, filter) -> list[Movie]:
-        return self.database
+        return self.movieRepo.get_movies_by(filter)
 
     def get_movies(self) -> list[Movie]:
-        return self.database
+        return self.movieRepo.get_all_movies()
