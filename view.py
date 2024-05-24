@@ -38,4 +38,12 @@ class MovieView:
             print("No movies found")
         for i, movie in enumerate(movies, start=1):
             print(i, movie)
-        
+            
+    def display_movie_entry(self) -> str:
+        print("Enter movie data. Use semicolon between entries in one category")
+        fields = ["title", "genre", "producer", "year", "length", "studio", "actors"]
+        res = []
+        for field in fields:
+            value = input(f"Enter {field}: ")
+            res.append(value)
+        return ','.join(res)
