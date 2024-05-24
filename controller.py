@@ -11,7 +11,6 @@ class MovieController:
         user_option = ""
         while user_option != "q":
             user_option = self.view.wait_user_answer()
-            filter: str = ""
             match user_option:
                 case "1":
                     filter = self.view.get_target()

@@ -13,6 +13,9 @@ class MovieView:
         return user_query
     
     def get_target(self) -> dict[str, str]:
+        '''
+        Construct a search dictionary from user input
+        '''
         search_filter: dict[str, str] = {}
         allowed_fields = ["title", "genre", "producer", "year", "length", "studio", "actors"]
         
