@@ -12,8 +12,24 @@ class MovieView:
         user_query = input("Choose menu option: ")
         return user_query
     
-    def get_target(self) -> str:
-        return input("Enter search info: ")
+    def get_target(self) -> dict[str, str]:
+        search_filter: dict[str, str] = {}
+        allowed_fields = ["title", "genre", "producer", "year", "length", "studio", "actors"]
+        
+        print("\nEnter search options\nAllowed fields: ", *allowed_fields, "\ns to stop")
+        while len(search_filter.keys()) < 7:
+            field = input("Enter search field: ")
+            if field == 's':
+                break
+            if field not in allowed_fields:
+                print("Invalid field!")
+                continue
+            
+            value = input("Enter field value: ")
+            
+            search_filter[field] = value
+            
+        return search_filter
     
     def display_movies(self, movies: list, search=False) -> None:
         header = "\n---SEARCH RESULTS---" if search else "\n---MOVIES---"
