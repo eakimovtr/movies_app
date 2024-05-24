@@ -1,5 +1,6 @@
 from view import MovieView
 from model import MovieModel
+from repo import Movie
 
 
 class MovieController:
@@ -19,3 +20,7 @@ class MovieController:
                 case "2":
                     movies = self.model.get_movies()
                     self.view.display_movies(movies)
+                case "3":
+                    movie_raw = self.view.display_movie_entry()
+                    movie = Movie.from_str(movie_raw)
+                    self.model.save_movie(movie)

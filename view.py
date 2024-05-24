@@ -38,4 +38,7 @@ class MovieView:
             print("No movies found")
         for i, movie in enumerate(movies, start=1):
             print(i, movie)
-        
+            
+    def display_movie_entry(self) -> str:
+        print("Enter movie data. Use comma for field separation and semicolon between entries in one category")
+        return input()
