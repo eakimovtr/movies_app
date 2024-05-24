@@ -12,8 +12,6 @@ class MovieModel:
         self.movieRepo = movieRepo
 
     def get_movies_by(self, filter: dict[str, str]) -> list[Movie]:
-        if len(filter) == 0:
-            return []
         return self.movieRepo.get_movies_by(filter)
 
     def get_movies(self) -> list[Movie]:

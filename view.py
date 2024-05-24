@@ -19,18 +19,15 @@ class MovieView:
         search_filter: dict[str, str] = {}
         allowed_fields = ["title", "genre", "producer", "year", "length", "studio", "actors"]
         
-        print("\nEnter search options\nAllowed fields: ", *allowed_fields, "\ns to stop")
-        while len(search_filter.keys()) < 7:
-            field = input("Enter search field: ")
-            if field == 's':
+        print("\nEnter search options","\ns to stop")
+        for i in range(len(allowed_fields)):
+            value = input(f"Enter value for field '{allowed_fields[i]}. Use , for multiple options': ")
+            if value == 's':
+                for j in range(i, len(allowed_fields)):
+                    search_filter[allowed_fields[j]] = ""
                 break
-            if field not in allowed_fields:
-                print("Invalid field!")
-                continue
             
-            value = input("Enter field value: ")
-            
-            search_filter[field] = value
+            search_filter[allowed_fields[i]] = value
             
         return search_filter
     
